@@ -1,2 +1,9 @@
 # framingdev
-Development of Framing Fronend
+Development of Framing Frontend
+
+npm install
+
+then
+
+webpack --watch
+
