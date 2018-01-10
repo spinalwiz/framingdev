@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Framing</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
+  <style>
+  .tab-container {
+    margin-bottom: 30px;
+  }
+
+  .frame-thumb {
+    max-height: 50px;
+  }
+
+  .frames-box {
+    max-height: 600;
+    overflow: scroll;
+  }
+
+  .frame-box {
+    width: 95%;
+    margin-top: 5px;
+    margin-left: 5px;
+  }
+
+  .select-button {
+    float:right;
+  }
+
+</style>
+</head>
+<body>
+  <section class="section">
+    <div class="container">
+      <h1 class="title">
+        Framing Frontend
+      </h1>
+    </div>
+
+    <div id="app">
+      <div class="columns">
+        <div class="column"></div>
+        <div class="column is-three-quarters">
+          <form method="POST" action="/test" @submit.prevent="onSubmit">
+            <tabs class="tab-container">
+
+              <tab name="Frame" :selected="true">
+                <div class="field">
+                 <div class="select">
+                   <label class="label">Colour:</label>
+                   <div class="control">
+                     <select v-model="selectedColour">
+                       <option v-for="colour in colours" :value="colour">{{colour}}</option>
+                     </select>
+                   </div>
+                 </div>
+                 <div class="select">
+                   <label class="label">Finish:</label>
+                   <div class="control">
+                     <select v-model="selectedFinish">
+                       <option v-for="finish in finishes" :value="finish">{{finish}}</option>
+                     </select>
+                   </div>
+                 </div>
+               </div>
+
+               <ul class="frames-box">
+                 <li v-for="m in mouldingsFilter()" :key="m.id" class="box frame-box">
+                   <image class="frame-thumb" :src="m.image"/>
+                   <h4 class="subtitle">{{m.colour}} {{m.finish}} - {{m.width}}mm Wide</h4>
+                   <div class="frame-text">
+                     <button class="button select-button is-primary">Select</button>
+                     <p>Manufactured out of {{m.woodType}} with a {{m.finish}} finish.</p>
+                     <p>Rebate Depth: {{m.rebate}}mm Frame Depth: {{m.depth}}mm</p>
+                     <p class="is-size-7">ref: {{m.id}} stock:{{m.stock}}</p>
+                   </div>
+
+                 </li>
+               </ul>
+              </tab>
+
+              <tab name="Mount Style">
+
+              </tab>
+
+              <tab name="Mount Colour">
+
+              </tab>
+
+              <tab name="Glazing">
+
+              </tab>
+
+              <tab name="Accessories">
+
+              </tab>
+            </tabs>
+
+            <!-- <mybutton></mybutton> -->
+            <div class="control">
+              <button type="submit" class="button is-primary">Fetch</button>
+            </div>
+          </form>
+        </div>
+        <div class="column"></div>
+      </div>
+    </div>
+
+  </section>
+
+  <script src="https://unpkg.com/vue"></script>
+  <script src="build/bundle.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</body>
+</html>

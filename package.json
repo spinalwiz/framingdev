@@ -1,0 +1,29 @@
+{
+  "name": "framingjs",
+  "version": "1.0.0",
+  "description": "Fronted framing",
+  "main": "main.js",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.11.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-html": "^4.0.1",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "webpack": "^3.8.1"
+  },
+  "scripts": {
+    "watch": "webpack --watch",
+    "production": "webpack -p",
+    "build": "webpack"
+  },
+  "author": "Dan Nadel",
+  "license": "ISC"
+}
